@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>png-digital-hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Lato', sans-serif; color: #fff; overflow-x: hidden; scroll-behavior: smooth;}
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      width: 100%;
+      top: 0; left: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(0,0,0,0.7); /* Transparent on hero */
+    }
+    .navbar .logo { font-size: 22px; font-weight: bold; }
+
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    @media (max-width: 850px) {
+     .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      border-radius: 10px;
+      margin-top: 10px;
+      padding: 10px 0;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+
+      /* Allow dropdowns to expand on mobile */
+      .dropdown-content {
+        position: relative;
+        background-color: rgba(20,20,20,0.95);
+        box-shadow: none;
+        margin-top: 5px;
+      }
+    }
+
+
+    .navbar a {
+      color: #fff; text-decoration: none; margin: 0 15px;
+      transition: color .3s;
+    }
+    .navbar a:hover { color: #00d4ff; }
+    /* Dropdown Container */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Dropdown Button */
+    .dropbtn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-family: inherit;
+      cursor: pointer;
+      padding: 14px 15px;
+      transition: color 0.3s;
+    }
+
+    /* Dropdown Content */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(0,0,0,0.6);
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      border-radius: 8px;
+      z-index: 1001;
+    }
+
+    /* Dropdown Links */
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #444;
+    }
+
+    /* Show Dropdown on Hover */
+    .dropdown:hover .dropdown-content {
+      display: block;-
+    }
+
+    /* Highlight when hovered */
+    .dropdown:hover .dropbtn {
+      color: #00d4ff;
+    }
+
+
+    /* Hero */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1521790361543-f645cf042ec4') center/cover no-repeat;
+      height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.2); /* purple overlay */
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 60px; font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: #00d4ff; }
+    .hero .btn {
+      background: linear-gradient(45deg, #ff6a00, #00d4ff);
+      padding: 15px 35px; border: none; border-radius: 30px;
+      color: #fff; font-size: 16px; font-weight: bold;
+      cursor: pointer; transition: background .3s;
+    }
+    .hero .btn:hover { opacity: 0.9; }
+
+    /* Booking Tabs */
+    .category {
+      background: linear-gradient(90deg, #ff6a00, #00d4ff);
+      padding: 30px; border-radius: 15px;
+      width: 90%; max-width: 1000px; margin: -80px auto 50px;
+      z-index: 5; position: relative;
+    }
+    .tabs {
+      display: flex; justify-content: space-between; margin-bottom: 20px;
+    }
+    .tabs button {
+      flex: 1; padding: 12px; background: #fff;
+      border: none; cursor: pointer; font-weight: bold; color: #444;
+      transition: 0.3s;
+    }
+    .tabs button:hover { background: #eee; }
+
+     /* Search bar */
+    .search-form {
+      display: flex;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .search-form input {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .search-form button {
+      padding: 12px 25px;
+      background: linear-gradient(45deg, #ff6a00, #00d4ff);
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    .search-form button:hover { opacity: 0.9; }
+
+    /* Explore Section */
+    .explore {
+      text-align: center; padding: 60px 20px; color: #333;
+      background: #fff;
+    }
+    .explore h2 { font-size: 32px; margin-bottom: 20px; color: #222; }
+    .explore p { max-width: 700px; margin: 0 auto 40px; }
+
+    .explore-cards {
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #f7f7f7; padding: 20px; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .card h3 { margin-bottom: 10px; color: #ff6a00; }
+    
+    /* ===== GLOBAL RESPONSIVE FIX ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Images & media auto fit */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Containers */
+.container, .wrapper, .content {
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Navigation responsive */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Flex sections */
+.row, .flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Cards auto fit */
+.card, .product-card, .box {
+    flex: 1 1 250px;
+}
+
+/* Buttons */
+button, input, select {
+    max-width: 100%;
+}
+
+/* ===== MOBILE VIEW ===== */
+@media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        width: 100%;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .row, .flex {
+        flex-direction: column;
+    }
+
+    .card, .product-card, .box {
+        width: 100%;
+    }
+
+    input, textarea, button {
+        width: 100%;
+    }
+}
+
+/* ===== SMALL MOBILE ===== */
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 13px;
+    }
+
+    nav {
+        padding: 10px;
+    }
+}
+    
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">Mekson Digital Hub</div>
+    <div class="nav-links">
+      <!-- HOME -->
+      <div class="dropdown">
+        <div class="dropdown-content">
+          <a href="index.html">Main Page</a>
+          <a href="#">Latest Updates</a>
+        </div>
+     </div>
+
+      <!-- PURCHASE DESIGN -->
+      <div class="dropdown">
+        <button class="dropbtn">Purchase Design</button>
+        <div class="dropdown-content">
+          <a href="purchase.html">Web Templates</a>
+          <a href="purchase.html">Software</a>
+          <a href="purchase.html">Mobile App UI Designs</a>
+          <a href="purchase.html">Game Projects</a>
+          <a href="purchase.html">Database</a>
+          <a href="purchase.html">Logos & Brand Packs</a>
+          <a href="purchase.html">Tutorials</a>
+        </div>
+      </div>
+
+      <!-- SELL DESIGN -->
+      <div class="dropdown">
+        <button class="dropbtn">Sell Design</button>
+        <div class="dropdown-content">
+          <a href="sell.html">Upload Your Design</a>
+          <a href="#">View Sales</a>
+          <a href="#">Manage Account</a>
+        </div>
+      </div>
+
+      <!-- PRODUCTS & SERVICE -->
+      <div class="dropdown">
+        <button class="dropbtn">Products & Service</button>
+        <div class="dropdown-content">
+          <a href="product-detail.html">Software</a>
+          <a href="product.html">Mobile Apps</a>
+          <a href="product.html">Tutorials</a>
+        </div>
+      </div>
+
+      <!-- ABOUT US -->
+      <div class="dropdown">
+        <button class="dropbtn">About Us</button>
+        <div class="dropdown-content">
+          <a href="#">Our Story</a>
+          <a href="#">Team</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <div class="nav-links" id="navLinks">
+         <a href="index.html">Home</a>
+         <a href="purchase.html">Purchase</a>
+         <a href="sell.html">Sell</a>
+         <a href="user-login.html">Login</a>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>DISCOVER <span>your PNG Digital Market Place</span></h1>
+      <button class="btn">Explore Now</button>
+    </div>
+  </section>
+
+  <!-- Category Overview -->
+  <section class="category">
+    <div class="tabs">
+      <button>Game</button></button>
+      <button>Software</button>
+      <button>Web templates</button>
+      <button>Database</button>
+      <button>Mobile apps</button>
+      <button>Tutorials</button>
+    </div>
+    <form class="search-form">
+      <input type="text" placeholder="Search for products, apps, or templates..." />
+      <button type="submit"><i class="fa fa-search"></i> Search</button>
+    </form>
+  </section>
+
+  <!-- explore Section -->
+  <section class="explore">
+    <h2>We have the best designs</h2>
+    <p>Developers or small businesses looking for ready-to-edit websites built by PNG own developers, explore now to see what's fit for you!</p>
+    <div class="explore-cards">
+      <div class="card"><h3>Category</h3><p>Ethical Outbox & Inbox</p></div>
+      <div class="card"><h3>Purchase digital Content</h3><p>Links & Resources</p></div>
+      <div class="card"><h3>Upload Local Content</h3><p>Grow and Learn</p></div>
+      <div class="card"><h3>Random Samples</h3><p>Creative tools for building content</p></div>
+    </div>
+  </section>
+
+  <!-- dropdown-contents- JS FIX -->
+  <script>
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const dropdownBtns = document.querySelectorAll('.dropbtn');
+
+    toggleBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Mobile dropdown click toggle
+    dropdownBtns.forEach(btn => {
+      btn.addEventListener('click', e => {
+        if (window.innerWidth <= 850) {
+          e.preventDefault();
+          const dropdown = btn.parentElement;
+          const content = dropdown.querySelector('.dropdown-content');
+          content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+      });
+    });
+  </script>
+  <!-- END dropdown-contents-SECTION -->
+
+
+</body>
+</html>

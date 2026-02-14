@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Purchase Design | Mekson Digital Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Lato', sans-serif; color: #fff; background: #f4f4f4; }
+
+    /* Navbar (reuse from main page) */
+    .navbar {
+      position: fixed; width: 100%; top: 0; left: 0;
+      z-index: 1000; display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 40px; background: rgba(0,0,0,0.7);
+    }
+    .navbar .logo { font-size: 22px; font-weight: bold; }
+    .navbar a { color: #fff; text-decoration: none; margin: 0 15px; transition: 0.3s; }
+    .navbar a:hover { color: #00d4ff; }
+
+    /* Main Section */
+    .main {
+      padding: 120px 40px 60px;
+      text-align: center;
+    }
+    .main h1 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 40px;
+    }
+    .main p {
+      color: #555;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    /* Filters */
+    .filters {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .filters select, .filters input {
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .filters button {
+      padding: 10px 25px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(45deg, #ff6a00, #00d4ff);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .filters button:hover { opacity: 0.9; }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 15px;
+      color: #333;
+      text-align: left;
+    }
+    .product-info h3 {
+      font-size: 18px;
+      color: #ff6a00;
+      margin-bottom: 8px;
+    }
+    .product-info p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .price {
+      font-weight: bold;
+      color: #00d4ff;
+    }
+    .btn-buy {
+      display: inline-block;
+      background: linear-gradient(45deg, #ff6a00, #00d4ff);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn-buy:hover { opacity: 0.9; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      margin-top: 50px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">Mekson Digital Hub</div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="purchase.html">Purchase Design</a>
+      <a href="sell.html">Sell Design</a>
+      <a href="about.html">About</a>
+      <a href="user-login.html">Login</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <section class="main">
+    <h1>Purchase Digital Designs</h1>
+    <p>Explore amazing PNG-made digital products — from websites and apps to posters and icons. Support local developers and creators.</p>
+
+    <div class="filters">
+      <select>
+        <option value="">All Categories</option>
+        <option>Web Templates</option>
+        <option>Software</option>
+        <option>Mobile App UI Designs</option>
+        <option>Game Projects</option>
+        <option>Database</option>
+        <option>Logos & Brand Packs</option>
+        <option>Tutorials</option>
+      </select>
+      <input type="text" placeholder="Search for a design...">
+      <button><i class="fa fa-search"></i> Search</button>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1616627980243-1a8e3097a9b8" alt="Product 1">
+        <div class="product-info">
+          <h3>Modern Portfolio Template</h3>
+          <p>Clean and responsive HTML/CSS website design.</p>
+          <p class="price">K50.00</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1600267165489-3fe8e10a3f18" alt="Product 2">
+        <div class="product-info">
+          <h3>Company Logo Pack</h3>
+          <p>10 customizable PNG logo templates for businesses.</p>
+          <p class="price">K30.00</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1621711992119-c1c64e8016c0" alt="Product 3">
+        <div class="product-info">
+          <h3>Mobile App UI Kit</h3>
+          <p>Professional Figma design for Android & iOS UI screens.</p>
+          <p class="price">K75.00</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Mekson Digital Hub | All Rights Reserved
+  </footer>
+
+</body>
+</html>

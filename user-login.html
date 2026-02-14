@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Modern Login Page with Particles</title>
+
+  <style>
+
+    * {
+
+      margin: 0;
+
+      padding: 0;
+
+      box-sizing: border-box;
+
+      font-family: 'Poppins', sans-serif;
+
+    }
+
+    body, html {
+
+      height: 100%;
+
+      width: 100%;
+
+      overflow: hidden;
+
+    }
+
+     /* Navbar (reuse from main page) */
+    .navbar {
+      position: fixed; width: 100%; top: 0; left: 0;
+      z-index: 1000; display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 40px; background: rgba(0,0,0,0.7);
+    }
+    .navbar .logo { font-size: 22px; font-weight: bold; color:#fff }
+    .navbar a { color: #fff; text-decoration: none; margin: 0 15px; transition: 0.3s; }
+    .navbar a:hover { color: #00d4ff; }
+
+    /* Background Particles Canvas */
+
+    #particles-js {
+
+      position: absolute;
+
+      width: 100%;
+
+      height: 100%;
+
+      background: url("https://images.unsplash.com/photo-1521790361543-f645cf042ec4") no-repeat center center/cover;
+
+      z-index: -1;
+
+    }
+
+    .login-box {
+
+      position: relative;
+
+      z-index: 1;
+
+      background: rgba(0, 0, 0, 0.75);
+
+      padding: 40px;
+
+      border-radius: 15px;
+
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+
+      width: 350px;
+
+      text-align: center;
+
+      color: #fff;
+
+      margin: auto;
+
+      top: 50%;
+
+      transform: translateY(-50%);
+
+    }
+
+    .login-box h2 {
+
+      margin-bottom: 25px;
+
+      font-size: 28px;
+
+      color: #00d4ff;
+
+    }
+
+    .login-box input {
+
+      width: 100%;
+
+      padding: 12px;
+
+      margin: 10px 0;
+
+      border: none;
+
+      border-radius: 8px;
+
+      outline: none;
+
+      font-size: 16px;
+
+    }
+
+    .login-box input[type="text"], 
+
+    .login-box input[type="password"] {
+
+      background: #333;
+
+      color: #fff;
+
+    }
+
+    .login-box input[type="submit"] {
+
+      background: #00d4ff;
+
+      color: #000;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      transition: 0.3s ease;
+
+    }
+
+    .login-box input[type="submit"]:hover {
+
+      background: #00aacc;
+
+    }
+
+    .login-box p {
+
+      margin-top: 15px;
+
+      font-size: 14px;
+
+    }
+
+    .login-box a {
+
+      color: #00d4ff;
+
+      text-decoration: none;
+
+    }
+
+    .login-box a:hover {
+
+      text-decoration: underline;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">Mekson Digital Hub</div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="purchase.html">Purchase Design</a>
+      <a href="sell.html">Sell Design</a>
+      <a href="about.html">About</a>
+      <a href="UserLoginForm.html">Login</a>
+    </div>
+  </div>
+
+  <!-- Particles Background -->
+
+  <div id="particles-js"></div>
+
+  <div class="login-box">
+
+    <h2>Login</h2>
+
+    <form>
+
+      <input type="text" placeholder="Username" required>
+
+      <input type="password" placeholder="Password" required>
+
+      <input type="submit" value="Login">
+
+    </form>
+
+    <p>Don't have an account? <a href="#">Sign Up</a></p>
+
+  </div>
+
+  <!-- Particles.js Script -->
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <script>
+
+    particlesJS("particles-js", {
+
+      "particles": {
+
+        "number": {
+
+          "value": 100,
+
+          "density": {
+
+            "enable": true,
+
+            "value_area": 800
+
+          }
+
+        },
+
+        "color": { "value": "#00d4ff" },
+
+        "shape": {
+
+          "type": "circle",
+
+          "stroke": { "width": 0, "color": "#000" }
+
+        },
+
+        "opacity": {
+
+          "value": 0.6,
+
+          "random": true
+
+        },
+
+        "size": {
+
+          "value": 3,
+
+          "random": true
+
+        },
+
+        "line_linked": {
+
+          "enable": true,
+
+          "distance": 150,
+
+          "color": "#00d4ff",
+
+          "opacity": 0.4,
+
+          "width": 1
+
+        },
+
+        "move": {
+
+          "enable": true,
+
+          "speed": 2,
+
+          "direction": "none",
+
+          "out_mode": "out"
+
+        }
+
+      },
+
+      "interactivity": {
+
+        "events": {
+
+          "onhover": { "enable": true, "mode": "grab" },
+
+          "onclick": { "enable": true, "mode": "push" }
+
+        },
+
+        "modes": {
+
+          "grab": { "distance": 200, "line_linked": { "opacity": 0.7 } },
+
+          "push": { "particles_nb": 4 }
+
+        }
+
+      },
+
+      "retina_detect": true
+
+    });
+
+  </script>
+  <script>
+    function loginUser(event) {
+    event.preventDefault(); // stop form from refreshing
+
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    // Simple example validation
+    if (username === "admin" && password === "1234") {
+      alert("Login successful!");
+      window.location.href = "newdesign.html"; // redirect to your main page
+    } else {
+      alert("Invalid username or password!");
+    }
+
+    return false;
+    }
+  </script>
+
+
+</body>
+
+</html>

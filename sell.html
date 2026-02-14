@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sell Design | Mekson Digital Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Lato', sans-serif; color: #333; background: #f4f4f4; }
+
+    /* Navbar */
+    .navbar {
+      position: fixed; width: 100%; top: 0; left: 0;
+      z-index: 1000; display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 40px; background: rgba(0,0,0,0.7);
+    }
+    .navbar .logo { font-size: 22px; font-weight: bold; color: #fff; }
+    .navbar a { color: #fff; text-decoration: none; margin: 0 15px; transition: 0.3s; }
+    .navbar a:hover { color: #00d4ff; }
+
+    /* Main Section */
+    .main {
+      padding: 120px 40px 60px;
+      text-align: center;
+    }
+    .main h1 {
+      color: #222;
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+    .main p {
+      color: #555;
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+
+    /* Upload Form */
+    .upload-section {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .upload-section h2 {
+      color: #ff6a00;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    label {
+      font-weight: bold;
+      color: #333;
+    }
+    input, select, textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    textarea {
+      resize: vertical;
+    }
+    button {
+      padding: 12px 25px;
+      background: linear-gradient(45deg, #ff6a00, #00d4ff);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      align-self: center;
+    }
+    button:hover { opacity: 0.9; }
+
+    /* Seller Dashboard */
+    .dashboard {
+      margin-top: 60px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .dashboard h2 {
+      color: #00d4ff;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .dashboard-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .dashboard-table th, .dashboard-table td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    .dashboard-table th {
+      background: #ff6a00;
+      color: white;
+    }
+    .dashboard-table tr:hover {
+      background: #f9f9f9;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      margin-top: 50px;
+    }
+    /* ===== GLOBAL RESPONSIVE FIX ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Images & media auto fit */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Containers */
+.container, .wrapper, .content {
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Navigation responsive */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Flex sections */
+.row, .flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Cards auto fit */
+.card, .product-card, .box {
+    flex: 1 1 250px;
+}
+
+/* Buttons */
+button, input, select {
+    max-width: 100%;
+}
+
+/* ===== MOBILE VIEW ===== */
+@media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        width: 100%;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .row, .flex {
+        flex-direction: column;
+    }
+
+    .card, .product-card, .box {
+        width: 100%;
+    }
+
+    input, textarea, button {
+        width: 100%;
+    }
+}
+
+/* ===== SMALL MOBILE ===== */
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 13px;
+    }
+
+    nav {
+        padding: 10px;
+    }
+}
+/* ===== DASHBOARD RESPONSIVE FIX ===== */
+
+/* Allow horizontal scroll on small screens */
+.dashboard {
+    overflow-x: auto;
+}
+
+/* Make table responsive */
+.dashboard-table {
+    width: 100%;
+    min-width: 600px; /* prevents squishing */
+}
+
+/* Reduce font slightly */
+.dashboard-table th,
+.dashboard-table td {
+    font-size: 14px;
+    word-break: break-word;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+
+    .dashboard {
+        padding: 15px;
+    }
+
+    .dashboard-table th,
+    .dashboard-table td {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .dashboard h2 {
+        font-size: 18px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+
+    .dashboard-table th,
+    .dashboard-table td {
+        font-size: 11px;
+        padding: 6px;
+    }
+
+    .dashboard h2 {
+        font-size: 16px;
+    }
+}
+/* ===== HAMBURGER MENU ===== */
+
+.menu-toggle {
+    display: none;
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(0,0,0,0.9);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        padding: 20px 0;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 10px 20px;
+        margin: 5px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+ <div class="navbar">
+  <div class="logo">Mekson Digital Hub</div>
+
+  <!-- Hamburger Icon -->
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Navigation Links -->
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="purchase.html">Purchase Design</a>
+    <a href="sell.html">Sell Design</a>
+    <a href="about.html">About</a>
+    <a href="UserLoginForm.html">Login</a>
+  </div>
+</div>
+
+  <!-- Main Section -->
+  <section class="main">
+    <h1>Sell Your Digital Design</h1>
+    <p>Upload your web templates, mobile apps, or creative assets for buyers to explore and purchase. Earn from your creativity!</p>
+
+    <!-- Upload Form -->
+    <div class="upload-section">
+      <h2>Upload Your Product</h2>
+      <form>
+        <label for="title">Product Title</label>
+        <input type="text" id="title" placeholder="Enter your design title" required>
+
+        <label for="category">Category</label>
+        <select id="category" required>
+          <option value="">Select Category</option>
+          <option>Web Template</option>
+          <option>Logo Design</option>
+          <option>Poster</option>
+          <option>Software</option>
+          <option>Mobile App</option>
+          <option>Tutorial</option>
+        </select>
+
+        <label for="price">Price (Kina)</label>
+        <input type="number" id="price" placeholder="Enter price (e.g. 50)" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" rows="4" placeholder="Describe your product..." required></textarea>
+
+        <label for="file">Upload File</label>
+        <input type="file" id="file" accept=".zip,.rar,.png,.jpg,.html,.css,.js,.apk,.exe" required>
+
+        <button type="submit"><i class="fa fa-upload"></i> Upload Design</button>
+      </form>
+    </div>
+
+    <!-- Seller Dashboard -->
+    <div class="dashboard">
+      <h2>Your Uploaded Designs</h2>
+      <table class="dashboard-table">
+        <thead>
+          <tr>
+            <th>Product Title</th>
+            <th>Category</th>
+            <th>Price (K)</th>
+            <th>Status</th>
+            <th>Sales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Creative Business Logo</td>
+            <td>Logo Design</td>
+            <td>30.00</td>
+            <td>Active</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>Restaurant Website Template</td>
+            <td>Web Template</td>
+            <td>80.00</td>
+            <td>Pending</td>
+            <td>0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Mekson Digital Hub | All Rights Reserved
+  </footer>
+<script>
+function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+}
+</script>
+</body>
+</html>
